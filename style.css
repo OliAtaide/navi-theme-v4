@@ -1,0 +1,415 @@
+@charset "UTF-8";
+/*
+Theme Name: NAVI Theme v3
+Author: Filipe de Oliveira Ataíde
+Author URI: https://github.com/OliAtaide
+Description: Tema do site NAVI
+Version: 3.0
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+*/
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+* {
+  font-family: "Lato", sans-serif;
+}
+
+.enfasis {
+  color: hsl(249deg, 92%, 90%);
+}
+
+.navbar {
+  background-color: #07041a;
+}
+.navbar img {
+  height: 48px;
+}
+.navbar .nav-link {
+  color: white !important;
+}
+.navbar .nav-link.active {
+  border-bottom: 3px solid #b19ced;
+}
+
+.section {
+  background-color: radial-gradient(hsla(256deg, 59%, 31%, 0.04), hsla(256deg, 59%, 31%, 0));
+  padding: 7.5em 0;
+}
+.section .section-tag,
+.section .btn-pill {
+  padding: 0.5em 1em;
+  font-weight: 700;
+  border-radius: 50rem;
+}
+.section .btn-all,
+.section .section-tag,
+.section .btn-pill {
+  border: 2px solid hsl(256deg, 45%, 62%);
+  color: hsl(256deg, 45%, 62%);
+}
+.section .section-title {
+  margin-top: 1em;
+  align-items: center;
+  font-weight: 700;
+}
+.section .section-title h1 {
+  font-weight: 700;
+}
+.section .btn-ok {
+  background-color: hsl(256deg, 69%, 77%);
+  color: white;
+  padding: 16px 40px;
+  font-weight: 700;
+}
+.section .card {
+  background-color: #f5f7ff;
+  border: none;
+  border-bottom: 4px solid hsl(256deg, 45%, 62%);
+}
+.section .card .card-tag {
+  color: #8a72ca;
+  font-weight: 700;
+}
+.section .card .card-title {
+  font-weight: 700;
+}
+
+.footer-section {
+  background-color: #07041b;
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+.footer-section img {
+  width: 150px;
+}
+.footer-section h6 {
+  color: #d6cefd;
+  margin-bottom: 24px;
+}
+.footer-section a,
+.footer-section p {
+  color: white;
+  text-decoration: none;
+}
+.footer-section hr {
+  border-width: 2px;
+  border-color: #d6cefd;
+  opacity: 1;
+}
+.footer-section i {
+  font-size: 40px;
+  color: #d6cefd;
+}
+
+.header-section {
+  background-color: #07041b;
+  color: white;
+}
+.header-section .section-text {
+  margin: 48px 0;
+}
+.header-section .section-text .underlined {
+  border-bottom: 3px solid #b19ced;
+}
+.header-section .logos {
+  margin-top: 90px;
+}
+.header-section .logos .btn:first-child {
+  padding-left: 0;
+}
+.header-section .logos .btn .fa-brands {
+  font-size: 40px;
+  color: hsl(250deg, 92%, 90%);
+}
+
+.notices-section a {
+  text-decoration: none;
+  color: #8a72ca;
+}
+
+.data-section {
+  background-color: hsl(253deg, 61%, 27%);
+  padding: 3em 0;
+  color: hsl(250deg, 92%, 90%);
+}
+.data-section h1 {
+  font-weight: 700;
+}
+
+.news-section .card-text,
+.projects-section .card-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.news-section .card img {
+  object-fit: cover;
+}
+.news-section .card-news-main img {
+  aspect-ratio: 5/3;
+}
+.news-section .card-news-row img {
+  aspect-ratio: 5/4;
+  height: 100%;
+}
+
+.card-news h6 {
+  color: hsl(256deg, 45%, 62%);
+}
+
+.news-section .section-title,
+.projects-section .section-title {
+  margin-bottom: 5.5em;
+}
+
+.projects-section {
+  background-color: hsl(246deg, 80%, 12%);
+}
+.projects-section .section-title {
+  color: white;
+}
+.projects-section .card {
+  height: 100%;
+}
+.projects-section .card-img-top {
+  aspect-ratio: 2/1;
+  object-fit: cover;
+}
+.projects-section .projects {
+  background-color: white;
+  padding: 48px 108px;
+  border-radius: 8px;
+  position: relative;
+  margin-bottom: 81px;
+}
+.projects-section .projects .swiper-slide {
+  height: auto !important;
+}
+.projects-section .projects .swiper-content {
+  height: 100% !important;
+}
+.projects-section .projects .swiper {
+  height: 100%;
+  background-color: white;
+}
+.projects-section .projects .swiper-button-prev,
+.projects-section .projects .swiper-button-next {
+  color: hsl(256deg, 45%, 62%);
+}
+.projects-section .projects .swiper-button-prev {
+  margin-left: 27px;
+}
+.projects-section .projects .swiper-button-next {
+  margin-right: 27px;
+}
+.projects-section .projects .swiper-pagination {
+  margin-bottom: -81px;
+}
+.projects-section .projects .swiper-pagination-bullet {
+  width: 16px;
+  height: 16px;
+  border: 2px solid hsl(250deg, 92%, 90%);
+  opacity: 1;
+}
+.projects-section .projects .swiper-pagination-bullet-active {
+  background-color: hsl(250deg, 92%, 90%);
+}
+
+.img-equipe {
+  margin-left: -5em;
+  margin-right: 5em;
+}
+
+.quote {
+  gap: 16px;
+  margin-top: 100px;
+}
+.quote .quote-mark {
+  font-family: "Ubuntu", sans-serif !important;
+  font-size: 128px;
+  color: hsl(253deg, 61%, 27%);
+  line-height: 1;
+}
+
+.quoter {
+  margin-top: -5em;
+  gap: 16px;
+}
+.quoter img {
+  padding: 8px;
+  border: 4px solid #8971c9;
+  border-radius: 50%;
+}
+.quoter .quoter-name {
+  color: #8971c9;
+  font-weight: 700;
+}
+
+.header-section .section-tag,
+.projects-section .section-tag,
+.partners-section .section-tag {
+  color: #d6cefd !important;
+  border-color: #d6cefd !important;
+}
+
+.partners-section {
+  background-color: hsl(253deg, 61%, 27%);
+  color: #d6cefd !important;
+}
+.partners-section hr {
+  border-width: 2px;
+  opacity: 1;
+  border-color: #d6cefd;
+  margin-bottom: 40px;
+}
+
+.sobre-section {
+  background-color: #07041b;
+  color: white;
+}
+.sobre-section .text {
+  padding: 0 200px;
+  margin-bottom: 100px;
+}
+.sobre-section .text h1 {
+  margin-bottom: 90px;
+  font-weight: 700;
+}
+.sobre-section .text p {
+  margin-bottom: 2em;
+}
+.sobre-section .card {
+  padding: 50px 70px;
+}
+.sobre-section .card .row {
+  gap: 100px;
+}
+.sobre-section .card img {
+  margin-bottom: 24px;
+}
+.sobre-section .card h5 {
+  color: #8971c9;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.sobre-section .card p {
+  color: #42404d;
+}
+
+.contact-section {
+  background-color: hsl(249deg, 75%, 6%);
+  color: white;
+}
+.contact-section .section-tip {
+  border-left: 5px solid #b19ced;
+  padding: 2px 24px;
+  margin: 24px 0;
+}
+.contact-section .section-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin: 80px 0;
+}
+.contact-section .section-contacts .section-contact {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.contact-section .section-contacts .section-contact h6 {
+  font-weight: 700;
+  color: #d6cefd;
+}
+.contact-section .section-contacts .section-contact i {
+  font-size: 48px;
+}
+.contact-section .card-body {
+  margin: 32px;
+}
+.contact-section label {
+  color: #8971c9;
+  font-weight: 700;
+}
+.contact-section input {
+  margin-bottom: 24px;
+}
+.contact-section input,
+.contact-section textarea {
+  border: 1px solid hsl(249deg, 9%, 28%);
+  padding: 8px 16px;
+  color: #6d6b80;
+}
+.contact-section textarea {
+  height: 180px;
+}
+.contact-section button {
+  padding: 14px 18px;
+  font-weight: 700;
+  background-color: hsl(256deg, 45%, 62%);
+}
+
+.event-section h1 {
+  color: #2e1b70;
+}
+.event-section .row {
+  gap: 120px;
+}
+.event-section .fa-brands {
+  font-size: 40px;
+  color: hsl(256deg, 45%, 62%);
+}
+.event-section .fa-regular {
+  font-size: 24px;
+  color: hsl(256deg, 45%, 62%);
+}
+.event-section h6,
+.event-section h3 {
+  font-weight: 700;
+  color: hsl(256deg, 45%, 62%);
+}
+.event-section .event-thumbnail {
+  border-radius: 8px;
+  aspect-ratio: 2/1;
+  object-fit: cover;
+  margin: 56px 0;
+}
+
+.vr {
+  border-left: 2px solid hsl(256deg, 45%, 62%);
+  min-height: 100%;
+  opacity: 1;
+}
+
+.cats {
+  display: flex;
+  gap: 1em;
+}
+
+.cat {
+  border: 2px solid #8a72ca;
+  color: #8a72ca;
+  font-weight: 700;
+  border-radius: 8px;
+}
+.cat.active {
+  background-color: #8a72ca !important;
+  color: white !important;
+}
+
+.search-form input {
+  border: 1px solid #43414e;
+  border-radius: 8px 0px 0px 8px !important;
+  width: 264px;
+}
+.search-form button {
+  background-color: hsl(256deg, 45%, 62%);
+  border: 1px solid hsl(256deg, 45%, 62%);
+  color: white;
+  border-radius: 0px 8px 8px 0px !important;
+}
+
+/*# sourceMappingURL=style.css.map */
