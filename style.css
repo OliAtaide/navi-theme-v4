@@ -18,17 +18,23 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
   color: hsl(249deg, 92%, 90%);
 }
 
+body {
+  margin-top: 70px !important;
+}
+
 .navbar {
   background-color: #07041a;
 }
 .navbar img {
   height: 48px;
 }
-.navbar .nav-link {
+.navbar a {
   color: white !important;
+  text-decoration: none;
 }
-.navbar .nav-link.active {
+.navbar a[aria-current] {
   border-bottom: 3px solid #b19ced;
+  padding-bottom: 0.5em;
 }
 
 .section {
@@ -61,17 +67,246 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
   padding: 16px 40px;
   font-weight: 700;
 }
-.section .card {
-  background-color: #f5f7ff;
-  border: none;
-  border-bottom: 4px solid hsl(256deg, 45%, 62%);
+
+a {
+  text-decoration: none !important;
 }
-.section .card .card-tag {
-  color: #8a72ca;
+
+.card {
+  background-color: #f5f7ff !important;
+  border: none !important;
+  border-bottom: 4px solid hsl(256deg, 45%, 62%) !important;
+}
+.card .card-tag {
+  color: #8a72ca !important;
+}
+.card .card-title,
+.card .card-tag {
+  font-weight: 700 !important;
+}
+.card .card-title,
+.card .card-text,
+.card .card-date {
+  color: hsl(249deg, 9%, 28%) !important;
+}
+
+.breadcrumb {
+  padding-top: 32px !important;
+  margin-bottom: 80px !important;
+}
+
+.breadcrumb-item a {
+  color: hsl(249deg, 9%, 28%) !important;
+}
+
+.docs {
+  line-height: 3;
+}
+.docs h4,
+.docs a {
   font-weight: 700;
 }
-.section .card .card-title {
+.docs a {
+  color: #8971c9;
+}
+.docs h4 {
+  color: #2e1b70;
+}
+.docs ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+.docs ul li ul {
+  padding-left: 6em;
+}
+
+.sobre-section {
+  color: white;
+}
+.sobre-section .text {
+  padding: 0 200px;
+  margin-bottom: 100px;
+}
+.sobre-section .text h1 {
+  margin-bottom: 90px;
   font-weight: 700;
+}
+.sobre-section .text p {
+  margin-bottom: 2em;
+}
+.sobre-section .card {
+  padding: 50px 70px;
+}
+.sobre-section .card .row {
+  gap: 100px;
+}
+.sobre-section .card img {
+  margin-bottom: 24px;
+}
+.sobre-section .card h5 {
+  color: #8971c9;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.sobre-section .card p {
+  color: #42404d;
+}
+
+.contact-section {
+  color: white;
+}
+.contact-section .section-tip {
+  border-left: 5px solid #b19ced;
+  padding: 2px 24px;
+  margin: 24px 0;
+}
+.contact-section .section-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  margin: 80px 0;
+}
+.contact-section .section-contacts .section-contact {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.contact-section .section-contacts .section-contact h6 {
+  font-weight: 700;
+  color: #d6cefd;
+}
+.contact-section .section-contacts .section-contact i {
+  font-size: 48px;
+}
+.contact-section .card-body {
+  margin: 32px;
+}
+.contact-section label {
+  color: #8971c9;
+  font-weight: 700;
+}
+.contact-section input {
+  margin-bottom: 24px;
+}
+.contact-section input,
+.contact-section textarea {
+  border: 1px solid hsl(249deg, 9%, 28%);
+  padding: 8px 16px;
+  color: #6d6b80;
+}
+.contact-section textarea {
+  height: 180px;
+}
+.contact-section button {
+  padding: 14px 18px;
+  font-weight: 700;
+  background-color: hsl(256deg, 45%, 62%);
+}
+
+.cats {
+  display: flex;
+  gap: 1em;
+}
+
+.cat {
+  border: 2px solid #8a72ca !important;
+  color: #8a72ca !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+}
+.cat.active {
+  background-color: #8a72ca !important;
+  color: white !important;
+}
+
+.input-group {
+  width: 300px !important;
+}
+.input-group input {
+  border: 1px solid #43414e;
+  border-radius: 8px 0px 0px 8px !important;
+}
+.input-group button {
+  background-color: hsl(256deg, 45%, 62%);
+  border: 1px solid hsl(256deg, 45%, 62%);
+  color: white;
+  border-radius: 0px 8px 8px 0px !important;
+}
+
+.pagination {
+  justify-content: center;
+  margin-bottom: 7.5em;
+}
+.pagination .nav-links {
+  display: flex;
+  gap: 20px;
+}
+.pagination .page-numbers {
+  display: flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  color: #2e1b70;
+}
+.pagination .page-numbers.current {
+  border-radius: 52px;
+  border: 2px solid #2e1b70;
+  font-weight: 700;
+}
+
+.archive .row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+.archive div[class^=col] {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+.archive .card {
+  height: 100%;
+}
+
+.event-section h1 {
+  color: #2e1b70;
+}
+.event-section .row {
+  gap: 120px;
+}
+.event-section .fa-brands {
+  font-size: 40px;
+  color: hsl(256deg, 45%, 62%);
+}
+.event-section .fa-regular {
+  font-size: 24px;
+  color: hsl(256deg, 45%, 62%);
+}
+.event-section h6,
+.event-section h3 {
+  font-weight: 700;
+  color: hsl(256deg, 45%, 62%);
+}
+.event-section .event-thumbnail {
+  border-radius: 8px;
+  aspect-ratio: 2/1;
+  object-fit: cover;
+  margin: 56px 0;
+  width: 100%;
+}
+.event-section p {
+  text-align: justify;
+}
+
+.vr {
+  border-left: 2px solid hsl(256deg, 45%, 62%);
+  min-height: 100%;
+  opacity: 1;
 }
 
 .footer-section {
@@ -101,8 +336,13 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
   color: #d6cefd;
 }
 
+.header-section,
+.sobre-section,
+.contact-section {
+  background-image: linear-gradient(to bottom right, #07041b, hsl(248deg, 74%, 12%), #07041b);
+}
+
 .header-section {
-  background-color: #07041b;
   color: white;
 }
 .header-section .section-text {
@@ -145,17 +385,43 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
   line-clamp: 3;
 }
 
-.news-section .card img {
+.card-news img {
   object-fit: cover;
-}
-.news-section .card-news-main img {
-  aspect-ratio: 5/3;
-}
-.news-section .card-news-row img {
-  aspect-ratio: 5/4;
-  height: 100%;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
 }
 
+.card-news:hover > .img-wrapper img {
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.card-news-main img {
+  aspect-ratio: 5/3;
+}
+
+.img-wrapper {
+  display: inline-block; /* change the default display type to inline-block */
+  overflow: hidden; /* hide the overflow */
+  height: 200px;
+  min-width: 300px;
+}
+.img-wrapper img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/*
+.card-news-row {
+    img {
+        aspect-ratio: 5/4;
+        height: 100%;
+    }
+}
+*/
 .card-news h6 {
   color: hsl(256deg, 45%, 62%);
 }
@@ -264,152 +530,6 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
   opacity: 1;
   border-color: #d6cefd;
   margin-bottom: 40px;
-}
-
-.sobre-section {
-  background-color: #07041b;
-  color: white;
-}
-.sobre-section .text {
-  padding: 0 200px;
-  margin-bottom: 100px;
-}
-.sobre-section .text h1 {
-  margin-bottom: 90px;
-  font-weight: 700;
-}
-.sobre-section .text p {
-  margin-bottom: 2em;
-}
-.sobre-section .card {
-  padding: 50px 70px;
-}
-.sobre-section .card .row {
-  gap: 100px;
-}
-.sobre-section .card img {
-  margin-bottom: 24px;
-}
-.sobre-section .card h5 {
-  color: #8971c9;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.sobre-section .card p {
-  color: #42404d;
-}
-
-.contact-section {
-  background-color: hsl(249deg, 75%, 6%);
-  color: white;
-}
-.contact-section .section-tip {
-  border-left: 5px solid #b19ced;
-  padding: 2px 24px;
-  margin: 24px 0;
-}
-.contact-section .section-contacts {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  margin: 80px 0;
-}
-.contact-section .section-contacts .section-contact {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
-.contact-section .section-contacts .section-contact h6 {
-  font-weight: 700;
-  color: #d6cefd;
-}
-.contact-section .section-contacts .section-contact i {
-  font-size: 48px;
-}
-.contact-section .card-body {
-  margin: 32px;
-}
-.contact-section label {
-  color: #8971c9;
-  font-weight: 700;
-}
-.contact-section input {
-  margin-bottom: 24px;
-}
-.contact-section input,
-.contact-section textarea {
-  border: 1px solid hsl(249deg, 9%, 28%);
-  padding: 8px 16px;
-  color: #6d6b80;
-}
-.contact-section textarea {
-  height: 180px;
-}
-.contact-section button {
-  padding: 14px 18px;
-  font-weight: 700;
-  background-color: hsl(256deg, 45%, 62%);
-}
-
-.event-section h1 {
-  color: #2e1b70;
-}
-.event-section .row {
-  gap: 120px;
-}
-.event-section .fa-brands {
-  font-size: 40px;
-  color: hsl(256deg, 45%, 62%);
-}
-.event-section .fa-regular {
-  font-size: 24px;
-  color: hsl(256deg, 45%, 62%);
-}
-.event-section h6,
-.event-section h3 {
-  font-weight: 700;
-  color: hsl(256deg, 45%, 62%);
-}
-.event-section .event-thumbnail {
-  border-radius: 8px;
-  aspect-ratio: 2/1;
-  object-fit: cover;
-  margin: 56px 0;
-}
-
-.vr {
-  border-left: 2px solid hsl(256deg, 45%, 62%);
-  min-height: 100%;
-  opacity: 1;
-}
-
-.cats {
-  display: flex;
-  gap: 1em;
-}
-
-.cat {
-  border: 2px solid #8a72ca;
-  color: #8a72ca;
-  font-weight: 700;
-  border-radius: 8px;
-}
-.cat.active {
-  background-color: #8a72ca !important;
-  color: white !important;
-}
-
-.search-form input {
-  border: 1px solid #43414e;
-  border-radius: 8px 0px 0px 8px !important;
-  width: 264px;
-}
-.search-form button {
-  background-color: hsl(256deg, 45%, 62%);
-  border: 1px solid hsl(256deg, 45%, 62%);
-  color: white;
-  border-radius: 0px 8px 8px 0px !important;
 }
 
 /*# sourceMappingURL=style.css.map */

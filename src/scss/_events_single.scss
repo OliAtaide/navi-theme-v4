@@ -1,0 +1,41 @@
+.event-section {
+    h1 {
+        color: #2e1b70;
+    }
+    .row {
+        gap: 120px;
+    }
+    .fa-brands {
+        font-size: 40px;
+        color: hsla(256, 45%, 62%, 1);
+    }
+
+    .fa-regular {
+        font-size: 24px;
+        color: hsla(256, 45%, 62%, 1);
+    }
+
+    h6,
+    h3 {
+        font-weight: 700;
+        color: hsla(256, 45%, 62%, 1);
+    }
+
+    .event-thumbnail {
+        border-radius: 8px;
+        aspect-ratio: 2 / 1;
+        object-fit: cover;
+        margin: 56px 0;
+        width: 100%;
+    }
+
+    p{
+        text-align: justify;
+    }
+}
+
+.vr {
+    border-left: 2px solid hsla(256, 45%, 62%, 1);
+    min-height: 100%;
+    opacity: 1;
+}

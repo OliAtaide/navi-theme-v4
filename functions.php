@@ -20,6 +20,14 @@ function my_function_admin_bar()
 }
 add_filter('show_admin_bar', 'my_function_admin_bar');
 
+function add_additional_class_on_li($classes, $item, $args) {
+    if(isset($args->add_li_class)) {
+        $classes[] = $args->add_li_class;
+    }
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
+
 function pt_projects()
 {
     $labels = array(

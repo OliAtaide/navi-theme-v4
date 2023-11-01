@@ -114,8 +114,13 @@
             <div class="row ">
                 <div class="col-5">
                     <div class="card card-news card-news-main">
-                        <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($the_query->posts[0]->ID)) ?>"
-                            alt="" class="card-img-top">
+                        <?php
+                        $link1 = get_permalink($the_query->posts[0]->ID);
+                        ?>
+                        <a href="<?php echo $link1 ?>">
+                            <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($the_query->posts[0]->ID)) ?>"
+                                alt="" class="card-img-top">
+                        </a>
                         <div class="card-body">
                             <div class="d-flex mb-3">
                                 <span class="card-tag">
@@ -125,9 +130,11 @@
                                     11/10/2021
                                 </span>
                             </div>
-                            <h4 class="card-title">
-                                <?php echo $the_query->posts[0]->post_title ?>
-                            </h4>
+                            <a href="<?php echo $link1 ?>">
+                                <h4 class="card-title">
+                                    <?php echo $the_query->posts[0]->post_title ?>
+                                </h4>
+                            </a>
                             <div class="card-text">
                                 <?php echo $the_query->posts[0]->post_content ?>
                             </div>
@@ -137,8 +144,13 @@
                 <div class="col-7">
                     <div class="row mb-3 h-50">
                         <div class="card card-news card-news-row p-0 flex-row">
-                            <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($the_query->posts[1]->ID)) ?>"
-                                class="rounded-start" alt="...">
+                            <?php
+                            $link2 = get_permalink($the_query->posts[1]->ID);
+                            ?>
+                            <a href="<?php echo $link2 ?>">
+                                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($the_query->posts[1]->ID)) ?>"
+                                    class="rounded-start" alt="...">
+                            </a>
                             <div class="card-body">
                                 <div class="d-flex mb-3">
                                     <span class="card-tag">
@@ -148,9 +160,11 @@
                                         11/10/2021
                                     </span>
                                 </div>
-                                <h4 class="card-title">
-                                    <?php echo $the_query->posts[1]->post_title ?>
-                                </h4>
+                                <a href="<?php echo $link2 ?>">
+                                    <h4 class="card-title">
+                                        <?php echo $the_query->posts[1]->post_title ?>
+                                    </h4>
+                                </a>
                                 <div class="card-text">
                                     <?php echo $the_query->posts[1]->post_content ?>
                                 </div>
@@ -159,8 +173,13 @@
                     </div>
                     <div class="row mb-3 h-50">
                         <div class="card card-news card-news-row p-0 flex-row">
-                            <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($the_query->posts[2]->ID)) ?>"
-                                class="rounded-start" alt="...">
+                        <?php
+                            $link2 = get_permalink($the_query->posts[2]->ID);
+                            ?>
+                            <a href="<?php echo $link2 ?>">
+                                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($the_query->posts[2]->ID)) ?>"
+                                    class="rounded-start" alt="...">
+                            </a>
                             <div class="card-body">
                                 <div class="d-flex mb-3">
                                     <span class="card-tag">
@@ -170,9 +189,11 @@
                                         11/10/2021
                                     </span>
                                 </div>
-                                <h4 class="card-title">
-                                    <?php echo $the_query->posts[2]->post_title ?>
-                                </h4>
+                                <a href="<?php echo $link2 ?>">
+                                    <h4 class="card-title">
+                                        <?php echo $the_query->posts[2]->post_title ?>
+                                    </h4>
+                                </a>
                                 <div class="card-text">
                                     <?php echo $the_query->posts[2]->post_content ?>
                                 </div>
@@ -220,7 +241,8 @@
                     <?php foreach ($projects_query->posts as $key => $value): ?>
                         <div class="swiper-slide">
                             <div class="card">
-                                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($value->ID)) ?>" alt="" class="card-img-top">
+                                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($value->ID)) ?>"
+                                    alt="" class="card-img-top">
                                 <div class="card-body">
                                     <h3 class="card-title">
                                         <?php echo $value->post_title ?>
@@ -244,7 +266,8 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <img class="img-equipe" src="<?php echo get_template_directory_uri() . '/src/imgs/equipe.png' ?>" alt="">
+                <img class="img-equipe" src="<?php echo get_template_directory_uri() . '/src/imgs/equipe.png' ?>"
+                    alt="">
             </div>
             <div class="col">
                 <span class="section-tag w-auto">
@@ -316,8 +339,10 @@
         <hr>
         <div class="d-flex align-items-center justify-content-between">
             <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/hogskolan.png' ?>" alt="">
-            <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/massachusetts.png' ?>" alt="">
-            <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/johns_hopkins.png' ?>" alt="">
+            <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/massachusetts.png' ?>"
+                alt="">
+            <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/johns_hopkins.png' ?>"
+                alt="">
             <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/mds.png' ?>" alt="">
             <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/lais.png' ?>" alt="">
         </div>
