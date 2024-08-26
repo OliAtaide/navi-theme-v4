@@ -8,8 +8,8 @@ $theme = get_bloginfo("template_url");
 <main>
   <?php if (is_search()): ?>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item"><a href="/noticias">Notícias</a></li>
+      <li class="breadcrumb-item"><a href="/">Pagina Inicial</a></li>
+      <li class="breadcrumb-item"><a href="/noticias">Eventos</a></li>
       <li class="breadcrumb-item active"><a href="javascript:void(0)"></a></li>
     </ol>
     <section class="events ">
@@ -74,17 +74,17 @@ $theme = get_bloginfo("template_url");
       <div class="container">
         <ul class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="/">Home</a>
+            <a href="/">Pagina inicial</a>
           </li>
           <li class="breadcrumb-item active">
-            <a href="javascript:void(0)" disabled>Notícias</a>
+            <a href="javascript:void(0)" disabled>Eventos</a>
           </li>
         </ul>
         <form class="search-form" role="search" method="get" id="searchform">
           <h2 class="mb-5 font-40 font-weight-black text-navi-seventh">
             Fique por dentro das novidades!
           </h2>
-          <div class="d-flex my-5">
+          <div class="d-flex my-5 search-field">
             <div class="cats">
               <?php
               $categories = get_categories();

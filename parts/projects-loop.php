@@ -1,6 +1,6 @@
 <?php $theme = get_bloginfo("template_url"); ?>
 
-<div class="col-md-4 mb-5" data-news="<?= the_ID(); ?>">
+<div class="col-md-4" data-news="<?= the_ID(); ?>">
   <div class="card card-news card-news-main">
 
     <a href="<?= the_permalink(); ?>">

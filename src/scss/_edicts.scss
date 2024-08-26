@@ -1,0 +1,129 @@
+.secao-editais {
+    hr {
+        margin: 2em 0;
+
+        &:last-child {
+            display: none;
+        }
+    }
+
+    .nav-tabs {
+        flex-direction: column;
+        border: none;
+        gap: 8px;
+        margin-top: 32px;
+
+        .nav-link {
+            width: 100%;
+            text-align: start;
+            padding: 14px 16px !important;
+            color: var(--primary-darkest);
+            font-weight: 700;
+            font-size: 14px;
+
+            &.active {
+                background-color: var(--primary-light);
+                box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.08);
+                border-radius: 0px 8px 8px 0px;
+                border: none;
+                border-left: 4px solid var(--primary-darkest);
+            }
+        }
+    }
+}
+
+.card-edital {
+    .card-title {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    strong {
+        color: #2e1b70;
+    }
+
+    [class^="col"]:not(:last-child) {
+        border-right: 2px solid var(--primary-dark);
+    }
+    /*
+    .row {
+        margin-left: -60px;
+        margin-right: -60px;
+
+        [class^=col] {
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+
+    */
+}
+
+.cats {
+    display: flex;
+    gap: 1em;
+
+    .cat {
+        border: 2px solid var(--primary-dark) !important;
+        color: var(--primary-dark);
+        font-weight: 700;
+    }
+
+    input:checked ~ label {
+        background-color: var(--primary-dark) !important;
+        color: white !important;
+    }
+}
+
+.secao-editais-single {
+    .row {
+        h1,
+        h4 {
+            color: #00a7ff;
+        }
+    }
+    .social{
+        margin-left: auto;
+    }
+
+    h1 {
+        font-weight: 400;
+    }
+
+    .docs {
+        border-radius: 16px;
+        border: 1px solid #e6e6e6;
+
+        padding: 24px;
+
+        h4 {
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            gap: 24px;
+            display: flex;
+            flex-direction: column;
+
+            a {
+                color: var(--primary-darkest);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .secao-post-info {
+        flex-direction: column !important;
+        align-items: start !important;
+        gap: 1em;
+
+        .logos {
+            margin: 0 !important;
+        }
+    }
+}

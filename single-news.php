@@ -1,123 +1,148 @@
 <?php
 get_header();
-$theme = get_bloginfo("template_url");
 the_post();
 
 global $wp;
-$current_url = home_url($wp->request)
-    ?>
+$current_url = home_url($wp->request);
+$id = get_the_ID();
+?>
 
-<div class="section event-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <div class="event">
-                    <div class="section-title">
-                        <h1>
-                            <?= the_title(); ?>
-                        </h1>
-                    </div>
-                    <div class="d-flex my-4 align-items-center">
-                        <div>
-                            <div class="d-flex gap-3">
-                                <i class="fa-regular fa-user"></i>
-                                <span>
-                                    <?php the_author(); ?>
-                                </span>
-                            </div>
-                            <br>
-                            <div class="d-flex gap-3">
-                                <i class="fa-regular fa-calendar"></i>
-                                <span>Publicado em:
-                                    <?= the_time("d/m/Y"); ?>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="logos ms-auto">
-                            <a type="button" class="btn">
-                                <i class="fa-brands fa-square-instagram"></i>
-                            </a>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink() ?>"
-                                target="_blank" class="btn">
-                                <i class="fa-brands fa-square-facebook"></i>
-                            </a>
-                            <a href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>&url=<?php the_permalink() ?>"
-                                target="_blank" class="btn" data-show-count="false">
-                                <i class="fa-brands fa-square-twitter"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-            </div>
-            <div class="col">
-
-            </div>
+<div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" data-bs-autohide="true"
+    data-bs-delay="-100">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+            Link copiado para a área de transferência
         </div>
     </div>
+</div>
+
+<div class="secao-noticias-single">
     <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <div class="event">
-                    <img src="<?= the_post_thumbnail_url(); ?>" alt="" class="event-thumbnail">
-                    <?= the_content(); ?>
-                </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/">
+                        Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="/noticias">
+                        Notícias
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <?= the_title(); ?>
+                </li>
+            </ol>
+        </nav>
+        <h1 class="secao-titulo">
+            <?= the_title(); ?>
+        </h1>
+        <div class="autor">
+            <div class="info">
+                <strong>
+                    <?= get_the_author() ?>
+                </strong>
+                <br>
+                <span>
+                    <? the_date() ?> - Atualizado em
+                    <?= the_modified_date() ?>
+                </span>
             </div>
-            <div class="col">
-                <h3 class="mb-4">Confira também</h3>
-                <?php
-                $post_id = get_the_ID();
-                $categories = wp_get_post_categories($post_id);
-
-                foreach ($categories as $key => $value) {
-                    echo '<script>console.log(' . $value . ')</script';
-                }
-
-                $related = new WP_Query(
-                    array(
-                        'post_type' => 'news',
-                        'posts_per_page' => 2,
-                        'post__not_in' => array($post_id)
-                    )
-                );
-
-
-                if ($related->have_posts()) {
-                    while ($related->have_posts()) {
-                        $related->the_post();
-                        ?>
-                        <a href="<?= get_permalink(get_the_ID()) ?>">
-                            <div class="card card-news card-news-main mb-5">
-                                <img src="<?= the_post_thumbnail_url(); ?>" alt="" class="card-img-top">
-                                <div class="card-body">
-                                    <div class="d-flex mb-3">
-                                        <span class="card-tag">
-                                            Inovação
-                                        </span>
-                                        <span class="ms-auto">
-                                            11/10/2021
-                                        </span>
-                                    </div>
-                                    <h4 class="card-title">
-                                        <?= the_title() ?>
-                                    </h4>
-                                    <div class="card-text">
-                                        <?= the_excerpt() ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+            <div class="share">
+                <span>
+                    Compartilhe:
+                </span>
+                <div class="dropdown-center">
+                    <button class="btn shar-btn" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-share"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-menu-arrow"></div>
                         <?php
-                    }
-                    wp_reset_postdata();
-                }
-                ?>
-
+                        get_template_part('/partials/share-icons')
+                            ?>
+                    </div>
+                </div>
+                <button type="button" class="btn link-btn" data-link="<?php the_permalink(); ?>"
+                    title="Botão de Copiar Link">
+                    <i class="bi bi-link-45deg"></i>
+                </button>
+            </div>
+        </div>
+        <img src="<?= the_post_thumbnail_url() ?>" alt="<?= the_post_thumbnail_caption() ?>" class="thumbnail">
+        <?= the_content() ?>
+        <hr>
+        <div class="autor">
+            <div class="topics">
+                <strong>
+                    <i class="bi bi-tag"></i>
+                    Tópicos
+                </strong>
+                <br>
+                <span>
+                    <?= the_tags(); ?>
+                </span>
+            </div>
+            <div class="share">
+                <span>
+                    Compartilhe:
+                </span>
+                <div class="dropdown-center">
+                    <button class="btn shar-btn" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-share"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-menu-arrow"></div>
+                        <?php
+                        get_template_part('/partials/share-icons')
+                            ?>
+                    </div>
+                </div>
+                <button type="button" class="btn link-btn" data-link="<?php the_permalink(); ?>"
+                    title="Botão de Copiar Link">
+                    <i class="bi bi-link-45deg"></i>
+                </button>
             </div>
         </div>
     </div>
 </div>
 
+<?php
+$rel_query = new WP_Query(
+    array(
+        'post_type' => 'news',
+        'category__in' => wp_get_post_categories($id),
+        'posts_per_page' => 3,
+        'post__not_in' => array($id)
+    )
+);
+?>
+
+<div class="secao-noticias py-5">
+    <div class="container">
+        <h1 class="secao-title mb-5">
+            Notícias relacionadas
+        </h1>
+        <div class="d-flex flex-column gap-4">
+            <?php
+            if ($rel_query->have_posts()):
+                while ($rel_query->have_posts()):
+                    $rel_query->the_post();
+                    get_template_part(
+                        'partials/card-news',
+                        null,
+                        array(
+                            'post' => $rel_query->post,
+                        )
+                    );
+                endwhile;
+            endif;
+            wp_reset_postdata();
+            ?>
+        </div>
+    </div>
+</div>
 <?php
 get_footer();
 ?>

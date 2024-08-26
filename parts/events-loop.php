@@ -1,7 +1,7 @@
 <?php $theme = get_bloginfo("template_url"); ?>
-<a href="<?= the_permalink(); ?>" class="mb-5">
+<a href="<?= the_permalink(); ?>">
 
-  <div class="card card-news card-news-row p-0 h-100 flex-row" data-events="<?= the_ID(); ?>">
+  <div class="card card-news card-news-row p-0 flex-row" data-events="<?= the_ID(); ?>">
     <?php
     $img = get_the_post_thumbnail_url();
     if ($img == '') {
@@ -9,7 +9,7 @@
     }
     ?>
     <div class="img-wrapper rounded-start">
-      <img src="<?php echo $img; ?>" class="img-fluid w-25" alt="<?php the_title(); ?>">
+      <img src="<?= $img; ?>" class="" alt="<?php the_title(); ?>">
     </div>
     <div class="card-body">
       <h4 class="card-title">

@@ -1,102 +1,110 @@
-<?php /* Template Name: Pagina Principal */?>
+<?php /* Template Name: Pagina Principal */ ?>
 
-<?php get_header() ?>
+<?php
 
-<div class="section header-section">
+get_header();
+
+$uri = get_template_directory_uri()
+
+    ?>
+
+<div class="secao secao-main">
+    <div class="bg-el bg-el-0"></div>
+    <div class="bg-el bg-el-1"></div>
+    <div class="bg-el bg-el-2"></div>
     <div class="container">
         <div class="row">
-            <div class="col-sm">
-                <span class="section-tag">
-                    Núcleo Avançado de Inovação Tecnológica
-                </span>
-                <h1 class="section-title">
-                    Desenvolvendo
-                    <br>
-                    <span class="enfasis">Inovação e Tecnologia</span>
-                </h1>
-                <h3 class="section-text">
-                    Apaixonados por transformar nossa pesquisa em <span class="underlined">resultados para a
-                        sociedade</span>.
-                </h3>
-                <div class="btn btn-ok">
-                    VER PROJETOS
-                </div>
-                <div class="logos">
-                    <a type="button" class="btn">
-                        <i class="fa-brands fa-square-instagram"></i>
+            <div class="col">
+                <div class="secao-main-text">
+                    <div>
+                        <h1 class="secao-titulo secao-main-titulo-1">
+                            Desenvolvendo
+                        </h1>
+                        <h1 class="secao-titulo secao-main-titulo-2">
+                            Inovação e Tecnologia
+                        </h1>
+                    </div>
+                    <h4 class="secao-subtitulo">
+                        Descubra como nossos projetos inovadores estão moldando o futuro, integrando tecnologia de
+                        ponta
+                        e
+                        soluções criativas para enfrentar os desafios contemporâneos.
+                    </h4>
+                    <a href="/projetos" class="btn btn-primary">
+                        VER PROJETOS
                     </a>
-                    <a type="button" class="btn">
-                        <i class="fa-brands fa-square-facebook"></i>
-                    </a>
-                    <a type="button" class="btn">
-                        <i class="fa-brands fa-square-twitter"></i>
-                    </a>
+                    <?php
+                    get_template_part('/partials/social-icons')
+                        ?>
                 </div>
             </div>
-            <div class="col-sm">
-                <img class="img-fluid w-100"
-                    src="<?php echo get_template_directory_uri() . '/src/svg/header_img.svg' ?>" alt="">
+            <div class="col">
+                <div class="img-containers">
+                    <div class="div img-container img-container-0">
+                        <img class="" src="<?= $uri . '/src/imgs/header-0.png' ?>" alt="bolha 0" />
+                    </div>
+                    <div class="div img-container img-container-1">
+                        <img class="" src="<?= $uri . '/src/imgs/header-1.jpeg' ?>" alt="bolha 1" />
+                    </div>
+                    <div class="div img-container img-container-2">
+                        <img class="" src="<?= $uri . '/src/imgs/header-0.png' ?>" alt="bolha 2" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="data-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <div class="d-flex gap-3 flex-column flex-sm-row">
-                    <img src="<?php echo get_template_directory_uri() . '/src/svg/proj_pesquisa.svg' ?>" alt="">
-                    <div>
-                        <h1>+8</h1>
+    <div class="card card-numeros">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <h1 class="card-numero-titulo">
+                        <img src="<?= $uri . '/src/imgs/chemistry.svg' ?>" alt="">
+                        +8
+                    </h1>
+                    <h6 class="card-numero-subtitulo">
                         Projetos de pesquisa
-                    </div>
+                    </h6>
                 </div>
-            </div>
-            <div class="col-sm">
-                <div class="d-flex gap-3 flex-column flex-sm-row">
-                    <img src="<?php echo get_template_directory_uri() . '/src/svg/reg_software.svg' ?>" alt="">
-                    <div>
-                        <h1>+20</h1>
-                        Registros de software
-                    </div>
+                <div class="col-6 col-md-3">
+                    <h1 class="card-numero-titulo">
+                        <img src="<?= $uri . '/src/imgs/computer.svg' ?>" alt="">
+                        +8
+                    </h1>
+                    <h6 class="card-numero-subtitulo">
+                        Projetos de pesquisa
+                    </h6>
                 </div>
-            </div>
-            <div class="col-sm">
-                <div class="d-flex gap-3 flex-column flex-sm-row">
-                    <img src="<?php echo get_template_directory_uri() . '/src/svg/patentes.svg' ?>" alt="">
-                    <div>
-                        <h1>+8</h1>
-                        Patentes
-                    </div>
+                <div class="col-6 col-md-3">
+                    <h1 class="card-numero-titulo">
+                        <img src="<?= $uri . '/src/imgs/paper.svg' ?>" alt="">
+                        +8
+                    </h1>
+                    <h6 class="card-numero-subtitulo">
+                        Projetos de pesquisa
+                    </h6>
                 </div>
-            </div>
-            <div class="col-sm">
-                <div class="d-flex gap-3 flex-column flex-sm-row">
-                    <img src="<?php echo get_template_directory_uri() . '/src/svg/parcerias_inter.svg' ?>" alt="">
-                    <div>
-                        <h1>+9</h1>
-                        Parcerias Internacionais
-                    </div>
+                <div class="col-6 col-md-3">
+                    <h1 class="card-numero-titulo">
+                        <img src="<?= $uri . '/src/imgs/earth.svg' ?>" alt="">
+                        +8
+                    </h1>
+                    <h6 class="card-numero-subtitulo">
+                        Projetos de pesquisa
+                    </h6>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="section news-section">
+<div class="secao secao-noticias py-5">
     <div class="container">
-        <span class="section-tag w-auto">
-            <small>
-                Notícias
-            </small>
-        </span>
-
-        <div class="section-title d-flex">
-            <h1>
-                Fique por dentro das novidades!
+        <div class="mb-5 d-flex align-items-center">
+            <h1 class="secao-noticias-titulo">
+                Fique por dentro das novidades
             </h1>
-            <div class="btn ms-auto btn-all">
+            <a href="/noticias" type="button" class="btn secao-btn ms-auto">
                 Ver todas as notícias
-            </div>
+            </a>
         </div>
         <?php
         // the query
@@ -106,277 +114,238 @@
                 'posts_per_page' => 3,
             )
         );
-        ?>
 
-        <?php if ($the_query->have_posts()): ?>
-
-
-            <div class="row ">
-                <div class="col-5">
+        if ($the_query->have_posts()):
+            $post = $the_query->posts[0];
+            $id = $post->ID;
+            ?>
+            <div class="row">
+                <div class="col-md-4">
                     <div class="card card-news card-news-main">
-                        <?php
-                        $link1 = get_permalink($the_query->posts[0]->ID);
-                        ?>
-                        <a href="<?php echo $link1 ?>">
-                            <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($the_query->posts[0]->ID)) ?>"
-                                alt="" class="card-img-top">
+                        <a href="<?= get_permalink($id) ?>">
+                            <img src="<?= get_the_post_thumbnail_url($id) ?>" alt="" class="card-img-top">
+                            <div class="card-body">
+                                <div class="d-flex mb-2">
+                                    <span class="tag">
+                                        Inovação
+                                    </span>
+                                    <span class="data ms-auto">
+                                        11/10/2021
+                                    </span>
+                                </div>
+                                <h3 class="card-title">
+                                    <?= $post->post_title ?>
+                                </h3>
+                                <div class="card-text">
+                                    <?= get_the_excerpt($id) ?>
+                                </div>
+                            </div>
+
                         </a>
-                        <div class="card-body">
-                            <div class="d-flex mb-3">
-                                <span class="card-tag">
-                                    Inovação
-                                </span>
-                                <span class="ms-auto">
-                                    11/10/2021
-                                </span>
-                            </div>
-                            <a href="<?php echo $link1 ?>">
-                                <h4 class="card-title">
-                                    <?php echo $the_query->posts[0]->post_title ?>
-                                </h4>
-                            </a>
-                            <div class="card-text">
-                                <?php echo $the_query->posts[0]->post_content ?>
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <div class="col-7">
-                    <div class="row mb-3 h-50">
-                        <div class="card card-news card-news-row p-0 flex-row">
-                            <?php
-                            $link2 = get_permalink($the_query->posts[1]->ID);
-                            ?>
-                            <a href="<?php echo $link2 ?>">
-                                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($the_query->posts[1]->ID)) ?>"
-                                    class="rounded-start" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <div class="d-flex mb-3">
-                                    <span class="card-tag">
-                                        Inovação
-                                    </span>
-                                    <span class="ms-auto">
-                                        11/10/2021
-                                    </span>
-                                </div>
-                                <a href="<?php echo $link2 ?>">
-                                    <h4 class="card-title">
-                                        <?php echo $the_query->posts[1]->post_title ?>
-                                    </h4>
-                                </a>
-                                <div class="card-text">
-                                    <?php echo $the_query->posts[1]->post_content ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3 h-50">
-                        <div class="card card-news card-news-row p-0 flex-row">
-                        <?php
-                            $link2 = get_permalink($the_query->posts[2]->ID);
-                            ?>
-                            <a href="<?php echo $link2 ?>">
-                                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($the_query->posts[2]->ID)) ?>"
-                                    class="rounded-start" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <div class="d-flex mb-3">
-                                    <span class="card-tag">
-                                        Inovação
-                                    </span>
-                                    <span class="ms-auto">
-                                        11/10/2021
-                                    </span>
-                                </div>
-                                <a href="<?php echo $link2 ?>">
-                                    <h4 class="card-title">
-                                        <?php echo $the_query->posts[2]->post_title ?>
-                                    </h4>
-                                </a>
-                                <div class="card-text">
-                                    <?php echo $the_query->posts[2]->post_content ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md d-flex flex-column gap-4">
+                    <? get_template_part(
+                        'partials/card-news',
+                        null,
+                        array(
+                            'post' => $the_query->posts[1],
+                        )
+                    );
+                    get_template_part(
+                        'partials/card-news',
+                        null,
+                        array(
+                            'post' => $the_query->posts[2],
+                        )
+                    ); ?>
                 </div>
             </div>
-        </div>
-    <?php else: ?>
-        <p>
-            <?php __('No News'); ?>
-        </p>
-    <?php endif; ?>
+        <?php endif; ?>
+    </div>
 </div>
-</div>
-<div class="section projects-section">
+<div class="secao secao-projetos py-5">
     <div class="container">
+        <div class="secao-header">
+            <div>
+                <h1 class="secao-titulo">
+                    Conheça nosso trabalho
+                </h1>
+                <div class="secao-subtitulo">
+                    Inovações e Impactos que Fazem a Diferença na Sociedade
+                </div>
+            </div>
+            <a href="/projetos" type="button" class="btn secao-btn ms-auto">
+                Ver todos
+            </a>
+        </div>
         <?php
         // the query
         $projects_query = new WP_Query(
             array(
                 'post_type' => 'projects',
-                'posts_per_page' => 3,
+                'posts_per_page' => -1,
             )
         );
 
-
-        ?>
-
-        <span class="section-tag">
-            Projetos
-        </span>
-        <div class="section-title d-flex">
-            <h1>
-                Conheça nosso trabalho
-            </h1>
-            <div class="btn ms-auto btn-all">
-                Ver todos os projetos
-            </div>
-        </div>
-        <div class="projects">
+        if ($projects_query->have_posts()):
+            ?>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <?php foreach ($projects_query->posts as $key => $value): ?>
+                    <?php
+                    while ($projects_query->have_posts()):
+                        $projects_query->the_post();
+                        ?>
                         <div class="swiper-slide">
-                            <div class="card">
-                                <img src="<?php echo wp_get_attachment_image_url(get_post_thumbnail_id($value->ID)) ?>"
-                                    alt="" class="card-img-top">
-                                <div class="card-body">
-                                    <h3 class="card-title">
-                                        <?php echo $value->post_title ?>
-                                    </h3>
-                                    <span class="card-text">
-                                        <?php echo $value->post_content ?>
+                            <?php
+                            get_template_part('partials/card-project')
+                                ?>
+                        </div>
+                        <?php
+                    endwhile;
+                    ?>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <?php
+        endif;
+        ?>
+    </div>
+</div>
+<div class="secao secao-sobre py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="pics row">
+                    <div class="col-md">
+                        <img class="img-fluid" src="<?= $uri . '/src/imgs/about-0.jpeg' ?>" alt="">
+                    </div>
+                    <div class="col-md">
+                        <img class="img-fluid" src="<?= $uri . '/src/imgs/about-1.jpeg' ?>" alt="">
+                    </div>
+                </div>
+                <div class="citacao row mx-5">
+                    <div class="col">
+                        <div class="frase">
+                            <div class="aspas">
+                                “
+                            </div>
+                            <div>
+                                Tecnologia e inovação movem o mundo. Nossa missão é estar sempre em movimento,
+                                buscando o novo.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex h-100">
+                            <div class="autor mt-auto">
+                                <div class="h-100">
+                                    <span class="nome">
+                                        Dr. João Paulo Queiroz
                                     </span>
+                                    <br>
+                                    <span class="autor">
+                                        Coordenador do NAVI
+                                    </span>
+                                </div>
+                                <div class="img-container">
+                                    <img src="<?= get_template_directory_uri() . '/src/imgs/drjoao.png' ?>" alt="">
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach ?>
+                    </div>
                 </div>
             </div>
+            <div class="col-md">
+                <h1 class="secao-titulo">
+                    Decole com o NAVI 🚀
+                </h1>
+                <p>
+                    O laboratório traz como estratégia propulsora, inovação e ciência como ponte entre tecnologias,
+                    engenharias e necessidades diárias.
+                </p>
+                <p>
+                    Junto com parceiros da indústria, laboratórios de inovação nacionais e internacionais e agências
+                    de
+                    pesquisa governamentais, contando com toda a infraestrutura do IFRN, o NAVI oferece instalações,
+                    equipamentos, pessoal especializado para dar suporte e inspirar a consolidação de parcerias e
+                    colaboração.
+                </p>
+                <p>
+                    <strong>
+                        Confira nossos editais e venha fazer parte da nossa equipe!
+                    </strong>
+                </p>
+                <a href="/editais" class="btn">
+                    VER EDITAIS
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="secao secao-citacoes py-5">
+    <div class="bg-el bg-el-3"></div>
+    <div class="bg-el bg-el-4"></div>
+    <div class="container">
+        <div class="swiper citacoesSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="row mx-5 gap-5">
+                        <div class="col-4">
+                            <div class="d-flex">
+                                <img class="ms-auto" src="<?= $uri . '/src/imgs/aspas.png' ?>" alt="">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h5>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                unknown printer took a galley of type and scrambled it to make a type specimen
+                                book.”
+                            </h5>
+                            <h6>
+                                Yasmim Morais
+                            </h6>
+                            <small>
+                                Pesquisadora | NAVI
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    t
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
         </div>
     </div>
 </div>
-<div class="section notices-section">
+<div class="secao secao-parceiros py-5">
     <div class="container">
+        <h1 class="secao-titulo">
+            Nossos parceiros
+        </h1>
         <div class="row">
             <div class="col">
-                <img class="img-equipe" src="<?php echo get_template_directory_uri() . '/src/imgs/equipe.png' ?>"
-                    alt="">
+                <img src="<?= get_template_directory_uri() . '/src/imgs/hib_logo.svg' ?>" alt="">
             </div>
             <div class="col">
-                <span class="section-tag w-auto">
-                    <small>
-                        Editais
-                    </small>
-                </span>
-
-                <div class="section-title d-flex">
-                    <h1>
-                        Decole com o NAVI
-                    </h1>
-                </div>
-                <div class="section-text">
-                    <p>
-                        O laboratório traz como estratégia propulsora, inovação e ciência como ponte entre
-                        tecnologias, engenharias e necessidades diárias.
-                    </p>
-                    <p>
-                        Junto com parceiros da indústria, laboratórios de inovação nacionais e internacionais e
-                        agências de pesquisa governamentais, contando com toda a infraestrutura do IFRN, o NAVI
-                        oferece instalações, equipamentos, pessoal especializado para dar suporte e inspirar a
-                        consolidação de parcerias e colaboração
-                    </p>
-                    <p>
-                        <a href="">
-                            Confira nossos editais e venha fazer parte da nossa equipe!
-                        </a>
-                    </p>
-                    <button type="button" class="btn btn-all">
-                        Ver todos os editais
-                    </button>
-                    <div class="d-flex quote w-75">
-                        <h1 class="quote-mark">“</h1>
-                        <span>
-                            Tecnologia e inovação movem o mundo. Nossa missão é estar sempre em movimento, buscando
-                            o novo.
-                        </span>
-                    </div>
-                    <div class="quoter d-flex align-items-center">
-                        <div class="ms-auto">
-                            <h6 class="quoter-name">
-                                Dr. João Paulo Queiroz
-                            </h6>
-                            <h6 class="quoter-post">
-                                Coordenador do NAVI
-                            </h6>
-                        </div>
-                        <img src="<?php echo get_template_directory_uri() . '/src/imgs/drjoao.png' ?>" alt="">
-                    </div>
-                </div>
+                <img src="<?= get_template_directory_uri() . '/src/imgs/uma_logo.svg' ?>" alt="">
+            </div>
+            <div class="col">
+                <img src="<?= get_template_directory_uri() . '/src/imgs/jhu_logo.svg' ?>" alt="">
+            </div>
+            <div class="col">
+                <img src="<?= get_template_directory_uri() . '/src/imgs/mds_logo.svg' ?>" alt="">
+            </div>
+            <div class="col">
+                <img src="<?= get_template_directory_uri() . '/src/imgs/lais_logo.svg' ?>" alt="">
             </div>
         </div>
     </div>
 </div>
-<div class="section partners-section">
-    <div class="container">
-        <span class="section-tag w-auto">
-            <small>
-                Parceiros
-            </small>
-        </span>
-
-        <div class="section-title">
-            <h1 class="text-center">
-                Nossos parceiros
-            </h1>
-        </div>
-        <hr>
-        <div class="d-flex align-items-center justify-content-between">
-            <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/hogskolan.png' ?>" alt="">
-            <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/massachusetts.png' ?>"
-                alt="">
-            <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/johns_hopkins.png' ?>"
-                alt="">
-            <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/mds.png' ?>" alt="">
-            <img class="img-fluid" src="<?php echo get_template_directory_uri() . '/src/imgs/lais.png' ?>" alt="">
-        </div>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-<!-- Initialize Swiper -->
-<script>
-    var swiper = new Swiper(".mySwiper", {
-        slidesPerView: 3,
-        spaceBetween: 56,
-        centeredSlides: false,
-        slidesPerGroup: 3,
-        grabCursor: true,
-        keyboard: {
-            enabled: true,
-        },
-        breakpoints: {
-            769: {
-                slidesPerView: 3,
-                slidesPerGroup: 3,
-            },
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-    });
-</script>
 
 <?php get_footer() ?>

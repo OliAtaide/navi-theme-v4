@@ -1,134 +1,128 @@
-<!--cabecalho-->
+<?php get_header() ?>
+
+<div class="d-none">
+  <?php
+
+  $qsearch = $_GET['s'];
+
+  $qstatus = $_GET['status'];
+
+  ?>
+</div>
 <?php
-get_header();
-$theme = get_bloginfo("template_url");
+$new_query = new WP_Query(
+  array(
+    'post_type' => 'edicts',
+    'posts_per_page' => -1,
+    's' => $qsearch,
+    'meta_key' => 'status',
+    'meta_value' => $qstatus
+  )
+);
+
 ?>
-<!--conteudo disposto em caso de pesquisa-->
-
-<main>
-  <?php if (is_search()): ?>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item"><a href="/noticias">Notícias</a></li>
-      <li class="breadcrumb-item active"><a href="javascript:void(0)"></a></li>
-    </ol>
-    <section class="edicts">
-      <div class="container py-navi-64">
-        <div class="row">
-          <div class="col-12">
-            <div class="mb-5">
-              <h2 class=" font-40 font-weight-black text-navi-seventh">
-                Fique por dentro das novidades!
-              </h2>
-              <div class="d-flex flex-column">
-                <span class="font-24">Buscando por: "
-                  <?php echo get_search_query(); ?>"
-                </span>
-                <span class="col-1">
-                  <a class="decoration-none text-navi-second mt-2"
-                    href="javascript:void(window.location.replace(window.location.pathname))">Voltar</a>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 col-lg-4 d-flex flex-column justify-content-center">
-            <div>
-              <form role="search" method="get" id="searchform">
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Pesquise aqui..." aria-label="Pesquise aqui..."
-                    aria-describedby="button-addon2" name="s" value="<?php echo $_GET["s"] ?>" />
-                  <button class="btn btn-navi-second" type="submit"><i class="icon-search d-flex"></i></button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <?php if (search_result_has_occurency("edicts", $_GET['s'])): ?>
-          <div class="row row-cols-lg-3 edicts-cards">
-            <?php display_post_type_on_search("edicts", $_GET['s'], 6); ?>
-          </div>
-          <div class="w-100 d-flex justify-content-center">
-            <button id="cM" class="text-center btn btn-navi-second shadow px-navi-32 py-2" data-page="2"
-              data-url="<?php echo admin_url("admin-ajax.php") ?>" data-type="edicts" data-append=".edictscards"
-              data-posts="6" data-name="notícias" data-search="true" data-category="">
-              Carregar mais
+<div class="secao-editais py-5">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="/">Home</a>
+      </li>
+      <li class="breadcrumb-item active">
+        Editais
+      </li>
+    </ul>
+    <h1 class="secao-titulo">
+      Editais
+    </h1>
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <form role="search" method="get">
+          <div class="input-group w-100">
+            <input type="text" class="form-control" placeholder="Pesquise aqui..." aria-label="Pesquise aqui..."
+              aria-describedby="basic-addon2" name="s">
+            <button type="submit" class="input-group-text" id="basic-addon2">
+              <i class="bi bi-search"></i>
             </button>
           </div>
-        <?php else: ?>
-          <div>
-            <p class="text-navi-second">
-              Não resultados para esta pesquisa.
-            </p>
-          </div>
-        <?php endif; ?>
-
-
-      </div>
-      </div>
-    </section>
-    <!--conteudo principal disposto sem pesquisa-->
-  <?php elseif (is_archive()): ?>
-
-    <section class="news archive-news">
-      <div class="container">
-        <ul class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="/">Home</a>
+        </form>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a class="nav-link <?= !$qstatus ? 'active' : '' ?>" type="button" href="<?= '/editais/?s=' . $qsearch ?>">
+              Todos
+            </a>
           </li>
-          <li class="breadcrumb-item active">
-            <a href="javascript:void(0)" disabled>Notícias</a>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link <?= $qstatus == 'andamento' ? 'active' : '' ?>"
+              href="<?= '/editais/?status=andamento&s=' . $qsearch ?>">
+              Em andamento
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a class="nav-link <?= $qstatus == 'finalizado' ? 'active' : '' ?>"
+              href="<?= '/editais/?status=finalizado&s=' . $qsearch ?>">
+              Finalizados
+            </a>
           </li>
         </ul>
-        <form class="search-form" role="search" method="get" id="searchform">
-          <h2 class="mb-5 font-40 font-weight-black text-navi-seventh">
-            Fique por dentro das novidades!
-          </h2>
-          <div class="d-flex my-5">
-            <div class="cats">
-              <?php
-              $categories = get_categories();
-              ?>
-              <?php foreach ($categories as $category): ?>
-                <div>
-                  <input type="checkbox" class="btn-check" id="<?= $category->cat_ID; ?>" name="categories[]"
-                    value="<?= $category->cat_ID; ?>">
-                  <label class="btn cat btn-outline-navi-second" for="<?= $category->cat_ID; ?>"
-                    data-url="<?php echo admin_url("admin-ajax.php") ?>" data-type="edicts" data-posts="6"
-                    data-category="<?= $category->cat_ID; ?>">
-                    <?= $category->cat_name; ?>
-                  </label>
-                </div>
-              <?php endforeach; ?>
-            </div>
-            <div class="input-group ms-auto">
-              <input class="form-control" type="search" placeholder="Pesquise aqui..." aria-label="Search"
-                aria-describedby="button-addon2" name="s">
-              <button class="btn btn-outline-success" type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-
-        <?php if (post_type_has_occurency("edicts")): ?>
-          <div class="row mb-3 h-50">
-            <?php display_post_type_on_windows_reload("edicts", 6); ?>
-          </div>
-          <?= the_posts_pagination(); ?>
-        <?php else: ?>
-          <div>
-            <p class="text-navi-second">
-              Não há projetos disponíveis no momento.
-            </p>
-          </div>
-        <?php endif; ?>
-
       </div>
-    </section>
-  <?php endif; ?>
-</main>
-<!--rodape-->
-<?php
-get_footer();
-?>
+      <div class="col">
+        <?php
+        if ($new_query->have_posts()):
+          while ($new_query->have_posts()):
+            $new_query->the_post();
+            ?>
+            <a href="<?= the_permalink(); ?>">
+              <div class="card card-edital">
+                <div class="card-body">
+                  <h3 class="card-title">
+                    <?= the_title(); ?>
+                  </h3>
+                  <div class="card-text">
+                    <p>
+                      <?= the_excerpt(); ?>
+                    </p>
+                    <div class="row">
+                      <div class="col-4">
+                        <span>
+                          Status
+                        </span>
+                        <br>
+                        <strong>
+                          <?= the_field('status') ?>
+                        </strong>
+                      </div>
+                      <div class="col-4">
+                        <span>
+                          Última atualização
+                        </span>
+                        <br>
+                        <strong>
+                          <?= the_modified_date() ?>
+                        </strong>
+                      </div>
+                      <div class="col-4">
+                        <span>
+                          Etapa
+                        </span>
+                        <br>
+                        <strong>
+                          <?= the_field('etapa') ?>
+                        </strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <hr>
+            <?php
+          endwhile;
+        elseif (is_search()):
+          echo 'Sem resultados para "' . get_search_query() . '"';
+        endif;
+        ?>
+      </div>
+    </div>
+  </div>
+</div>
+<?php get_footer() ?>

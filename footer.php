@@ -1,71 +1,77 @@
-<div class="footer-section">
+<div class="footer py-5">
     <div class="container">
         <div class="row">
-            <div class="col-5">
-                <img src="<?php echo get_template_directory_uri() . '/src/imgs/logo-white.png' ?>" alt="">
+            <div class="col-md">
+                <img src="<?= get_template_directory_uri() . '/src/svg/logo.svg' ?>" alt="">
             </div>
-            <div class="col-2">
-                <h6>
-                    NAVI
-                </h6>
-                <a href="">
-                    <p>
-                        Sobre
-                    </p>
-                </a>
-                <a href="">
-                    <p>
-                        Contato
-                    </p>
-                </a>
+            <div class="col-md">
+                <ul>
+                    <li>
+                        <h6>
+                            NAVI
+                        </h6>
+                    </li>
+                    <li>
+                        <a href="/sobre">
+                            Sobre
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contato">
+                            Contato
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-2">
-                <h6>
-                    CONFIRA
-                </h6>
-                <a href="">
-                    <p>
-                        Notícias
-                    </p>
-                </a>
-                <a href="">
-                    <p>
-                        Projetos
-                    </p>
-                </a>
-                <a href="">
-                    <p>
-                        Editais
-                    </p>
-                </a>
+            <div class="col-md">
+                <ul>
+                    <li>
+                        <h6>
+                            CONFIRA
+                        </h6>
+                    </li>
+                    <li>
+                        <a href="/noticias">
+                            Notícias
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/projetos">
+                            Projetos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/editais">
+                            Editais
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="col">
-                <h6>
-                    LOCALIZAÇÃO
-                </h6>
-                <p>
-                    Avenida Senador Salgado Filho, 1559,
-                    Tirol. Natal - RN I CEP 59015-000 Prédio do IT NC, 2º Andar, Sala 18
-                </p>
+            <div class="col-md">
+                <ul>
+                    <li>
+                        <h6>
+                            LOCALIZAÇÃO
+                        </h6>
+                    </li>
+                    <li>
+                        <p>
+                            Avenida Senador Salgado Filho, 1559,
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Tirol. Natal - RN I CEP 59015-000 Prédio do IT NC, 2º Andar, Sala 18
+                        </p>
+                    </li>
+                </ul>
             </div>
         </div>
-        <hr class="mb-5">
-        <div class="logos d-flex justify-content-center">
-            <a type="button" class="btn">
-                <i class="fa-brands fa-square-instagram"></i>
-            </a>
-            <a type="button" class="btn">
-                <i class="fa-brands fa-square-facebook"></i>
-            </a>
-            <a type="button" class="btn">
-                <i class="fa-brands fa-square-twitter"></i>
-            </a>
-        </div>
+        <hr>
+
+        <?php get_template_part('/partials/social-icons') ?>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
 </body>
 
 </html>

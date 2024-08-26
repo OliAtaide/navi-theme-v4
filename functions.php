@@ -1,12 +1,31 @@
 <?php
-// This function enqueues the Normalize.css for use. The first parameter is a name for the stylesheet, the second is the URL. Here we
-// use an online version of the css file.
-function add_normalize_CSS()
+
+$base_url = get_template_directory_uri();
+
+function add_styles()
 {
-    wp_enqueue_style('normalize-styles', "https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css");
+    wp_enqueue_style('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/src/bootstrap/css/bootstrap.min.css');
+    wp_enqueue_style('bootstrap-icons', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+    wp_enqueue_style('style', get_template_directory_uri() . '/style.css');
 }
-add_action('wp_enqueue_scripts', 'add_normalize_CSS');
-// Register a new navigation menu
+add_action('wp_enqueue_scripts', 'add_styles');
+function add_scripts()
+{
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('bootstrap', get_template_directory_uri() . '/src/bootstrap/js/bootstrap.bundle.min.js');
+    wp_enqueue_script('fontawesome', 'https://kit.fontawesome.com/5513c0ecd8.js');
+    wp_enqueue_script('swiper', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js');
+    wp_enqueue_script('script', get_template_directory_uri() . '/script.js');
+    wp_enqueue_script('ajax', get_template_directory_uri() . '/ajax.js');
+    wp_enqueue_script('recaptcha', 'https://www.google.com/recaptcha/api.js');
+    wp_localize_script('ajax', 'ajaxpagination', array(
+        'ajaxurl' => admin_url('admin-ajax.php'),
+        's' => (isset($_GET['s']) ? $_GET['s'] : '')
+    ));
+}
+add_action('wp_enqueue_scripts', 'add_scripts');
+
 function add_Main_Nav()
 {
     register_nav_menu('header-menu', __('Header Menu'));
@@ -20,8 +39,9 @@ function my_function_admin_bar()
 }
 add_filter('show_admin_bar', 'my_function_admin_bar');
 
-function add_additional_class_on_li($classes, $item, $args) {
-    if(isset($args->add_li_class)) {
+function add_additional_class_on_li($classes, $item, $args)
+{
+    if (isset($args->add_li_class)) {
         $classes[] = $args->add_li_class;
     }
     return $classes;
@@ -233,7 +253,7 @@ function pt_news()
         "hierarchical" => false,
         "rewrite" => ["slug" => "noticias", "with_front" => true],
         "query_var" => true,
-        "supports" => ["title", "excerpt", "author", "editor", "thumbnail"],
+        "supports" => ["title", "excerpt", "author", "editor"],
         "taxonomies" => array("category"),
     ];
 
@@ -263,6 +283,7 @@ function remove_default_post_type()
 }
 
 add_action('admin_menu', 'remove_default_post_type');
+
 
 function custom_menu_order($menu_ord)
 {
@@ -364,150 +385,66 @@ function display_post_type_on_windows_reload($post_type, $number_of_posts)
 
     Post_Type::display($post_type, $number_of_posts);
 }
-
-function ajax_script_load_more($args)
+function add_menu_link_class($atts, $item, $args)
 {
-    //init ajax
-    $ajax = false;
-    //check ajax call or not
-    if (
-        !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-        strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'
-    ) {
-        $ajax = true;
+    if (property_exists($args, 'link_class')) {
+        $atts['class'] = $args->link_class;
     }
-    //number of posts per page default
-    $num = $_POST['postToLoad'];
-    //page number
-    $paged = $_POST['page'];
-    $type = $_POST['type'];
-
-    if (!empty($_POST["cat"])) {
-        //args
-        $args = array(
-            'post_type' => $type,
-            'posts_per_page' => $num,
-            "cat" => $_POST["cat"],
-            'paged' => $paged
-        );
-    } else {
-
-        //args
-        $args = array(
-            'post_type' => $type,
-            'posts_per_page' => $num,
-            'paged' => $paged
-        );
-    }
-
-    //query
-    $query = new WP_Query($args);
-    //check
-    if ($query->have_posts()):
-        //loop articales
-        while ($query->have_posts()):
-            $query->the_post();
-            //include articles template
-            include "parts/$type-loop.php";
-        endwhile;
-    else:
-        echo 0;
-    endif;
-    //reset post data
-    wp_reset_postdata();
-    //check ajax call
-    if ($ajax)
-        die();
+    return $atts;
 }
-add_action('wp_ajax_nopriv_ajax_script_load_more', 'ajax_script_load_more');
-add_action('wp_ajax_ajax_script_load_more', 'ajax_script_load_more');
+add_filter('nav_menu_link_attributes', 'add_menu_link_class', 1, 3);
 
-add_action('wp_ajax_nopriv_ajax_script_load_more', 'ajax_script_load_more');
-add_action('wp_ajax_ajax_script_load_more', 'ajax_script_load_more');
+add_filter('nav_menu_css_class', 'special_nav_class', 10, 2);
 
-function ajax_script_order_by_date($args)
+function special_nav_class($classes, $item)
 {
-    //number of posts per page default
-    $num = $_POST['postToLoad'];
-    $type = $_POST['type'];
-    $ordering = $_POST['ordering'];
-
-    if ($type == "events") {
-        $args = array(
-            "post_type" => $type,
-            'meta_key' => 'data',
-            'orderby' => 'meta_value',
-            'order' => $ordering,
-            "posts_per_page" => $num
-        );
-    } else {
-        $args = array(
-            "post_type" => $type,
-            'order' => $ordering,
-            "posts_per_page" => $num
-        );
+    if (in_array('current-menu-item', $classes)) {
+        $classes[] = 'active ';
     }
-
-    //query
-    $query = new WP_Query($args);
-    //check
-    if ($query->have_posts()):
-        //loop articales
-        while ($query->have_posts()):
-            $query->the_post();
-            //include articles template
-            include "parts/$type-loop.php";
-        endwhile;
-    else:
-        echo 0;
-    endif;
-    //reset post data
-    wp_reset_postdata();
-
-    die();
+    return $classes;
 }
 
-add_action('wp_ajax_nopriv_ajax_script_order_by_date', 'ajax_script_order_by_date');
-add_action('wp_ajax_ajax_script_order_by_date', 'ajax_script_order_by_date');
-
-function ajax_script_filter_by_category($args)
+function load_news($num)
 {
-    //number of posts per page default
-    $num = $_POST['postToLoad'];
-    $type = $_POST['type'];
-    $categories = $_POST['categories'];
+    $posts = [];
+    $args = array(
+        'post_type' => 'news',
+        'posts_per_page' => (wp_doing_ajax() ? $_POST['num'] : $num),
+        's' => (wp_doing_ajax() ? $_POST['s'] : (isset($_GET['s']) ? $_GET['s'] : ''))
+    );
 
-    if ($categories) {
-        $args = array(
-            "post_type" => $type,
-            "category__in" => $categories,
-            "posts_per_page" => $num
-        );
-    } else {
-        $args = array(
-            "post_type" => $type,
-            "posts_per_page" => $num
+    $wp_query = new WP_Query($args);
+
+    if ($wp_query->have_posts()):
+        while ($wp_query->have_posts()):
+            $wp_query->the_post();
+            $posts[] = get_template_part(
+                'partials/card-news',
+                null,
+                array(
+                    'post' => $wp_query->post,
+                )
+            );
+        endwhile;
+    endif;
+    if ($wp_query->max_num_pages > 1) {
+        $posts[] = get_template_part(
+            'partials/load-more-button',
         );
     }
-
-    //query
-    $query = new WP_Query($args);
-    //check
-    if ($query->have_posts()):
-        //loop articales
-        while ($query->have_posts()):
-            $query->the_post();
-            //include articles template
-            include "parts/$type-loop.php";
-        endwhile;
-    else:
-        echo 0;
-    endif;
-    //reset post data
     wp_reset_postdata();
-
-    die();
 }
 
-add_action('wp_ajax_nopriv_ajax_script_filter_by_category', 'ajax_script_filter_by_category');
-add_action('wp_ajax_ajax_script_filter_by_category', 'ajax_script_filter_by_category');
+add_action('wp_ajax_load_news', 'load_news');
+add_action('wp_ajax_nopriv_load_news', 'load_news');
+
+add_filter('wp_mail_from_name', 'my_mail_from_name');
+function my_mail_from_name($name)
+{
+    return "Núcleo Avançado de Inovação Tecnológica (NAVI)";
+}
+add_filter('wp_mail_from', 'my_mail_from');
+function my_mail_from($email)
+{
+    return "secretariado@navi.ifrn.edu.br";
+}

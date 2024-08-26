@@ -4,28 +4,43 @@ get_header();
 $theme = get_bloginfo("template_url");
 ?>
 <main>
-  <section class="projects archive archive-projects">
+  <div class="d-none">
+    <?php
+
+    $qsearch = $_GET['s'];
+
+    $qcats = $_GET['categories']
+
+      ?>
+  </div>
+  <?php
+  $wp_query = new WP_Query(
+    array(
+      'post_type' => 'projects',
+      'posts_per_page' => 6,
+      's' => $qsearch,
+      'category__in' => $qcats
+    )
+  );
+  ?>
+  <section class="secao-projetos-archive py-5">
     <div class="container">
       <ul class="breadcrumb">
         <li class="breadcrumb-item">
           <a href="/">Home</a>
         </li>
         <li class="breadcrumb-item active">
-          <a href="javascript:void(0)" disabled>
-            Projetos
-          </a>
+          Projetos
         </li>
       </ul>
       <form class="search-form" role="search" method="get" id="searchform">
-        <h2 class="mb-5 font-40 font-weight-black text-navi-seventh">
-          <strong>
-            Conheça nossos projetos!
-          </strong>
+        <h1 class="secao-titulo">
+          Conheça nossos projetos!
           <?php if (is_search()): ?>
             - Listando por “<?php echo get_search_query(); ?>”
           <?php endif ?>
-        </h2>
-        <div class="d-flex my-5">
+        </h1>
+        <div class="d-flex my-5 search-field">
           <div class="cats">
             <?php
             $categories = get_categories();
@@ -46,44 +61,38 @@ $theme = get_bloginfo("template_url");
             <input class="form-control" type="search" placeholder="Pesquise aqui..." aria-label="Search"
               aria-describedby="button-addon2" name="s">
             <button class="btn btn-outline-success" type="submit">
-              <i class="fa-solid fa-magnifying-glass"></i>
+              <i class="bi bi-search"></i>
             </button>
           </div>
         </div>
       </form>
 
-      <?php if (is_search()): ?>
-        <?php if (search_result_has_occurency("projects", $_GET['s'])): ?>
-          <div class="row row-cols-lg-3 events-cards">
-            <?php display_post_type_on_search("projects", $_GET['s'], 6); ?>
-          </div>
-          <?= the_posts_pagination(); ?>
-        <?php else: ?>
-          <div>
-            <p class="text-navi-second">
-              Não há resultados para esta pesquisa.
-            </p>
-          </div>
-        <?php endif; ?>
-
-      <?php elseif (is_archive()): ?>
-        <?php if (post_type_has_occurency("projects")): ?>
-          <div class="row mb-3 h-50">
-            <?php display_post_type_on_windows_reload("projects", 6); ?>
-          </div>
-          <?= the_posts_pagination(); ?>
-        <?php else: ?>
-          <div>
-            <p class="text-navi-second">
-              Não há projetos disponíveis no momento.
-            </p>
-          </div>
-        <?php endif; ?>
-      <?php endif; ?>
-
-    </div>
+      <div class="row row-gap-4">
+        <?php if ($wp_query->have_posts()): ?>
+          <?php
+          while ($wp_query->have_posts()):
+            $wp_query->the_post();
+            ?>
+            <div class="col-md-4">
+              <?php
+              get_template_part('partials/card-project')
+                ?>
+            </div>
+            <?php
+          endwhile;
+        else:
+          if (is_search()):
+            echo 'Sem resultados para "' . get_search_query() . '"';
+          endif;
+        endif;
+        ?>
+      </div>
+      <?= the_posts_pagination(); ?>
   </section>
 </main>
+<script>
+
+</script>
 <!--rodape-->
 <?php
 get_footer();

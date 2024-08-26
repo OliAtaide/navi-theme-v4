@@ -1,0 +1,33 @@
+@media screen and (max-width: 576px) {
+    .secao-projetos-archive .search-field {
+        flex-direction: column;
+        row-gap: 1em;
+        margin-top: 2em !important;
+        margin-bottom: 2em !important;
+
+        .input-group {
+            width: 100%;
+        }
+    }
+}
+
+.secao-projetos-single {
+    .autor {
+        margin-bottom: 1em;
+        i {
+            color: var(--primary-dark);
+        }
+    }
+
+    .social {
+        gap: 16px;
+        display: flex;
+        a {
+            padding: 0;
+            i {
+                font-size: 22px;
+                color: var(--primary-dark);
+            }
+        }
+    }
+}

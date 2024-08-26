@@ -1,60 +1,95 @@
-.contact-section {
-    color: white;
-
-    .section-tip {
-        border-left: 5px solid #b19ced;
-        padding: 2px 24px;
-        margin: 24px 0;
+.secao-contato {
+    p {
+        font-size: 24px;
+        font-weight: 600;
     }
 
-    .section-contacts {
+    form {
+        padding: 32px;
+        background-color: #f3f7f9;
+        border-radius: 4px;
+        border-bottom: 4px solid var(--primary-dark);
+        margin-bottom: 32px;
+
+        label {
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        input,
+        textarea {
+            border-radius: 4px;
+            border: 1px solid #333;
+        }
+
+        textarea {
+            resize: none;
+            height: 160px;
+        }
+    }
+    .mapa {
         display: flex;
-        flex-direction: column;
-        gap: 48px;
-        margin: 80px 0;
-
-        .section-contact {
+        .info {
+            width: calc(100% - 600px);
+            height: 650px;
+            background-color: #7f9cff;
+            padding: 96px;
+            padding-right: 0;
             display: flex;
-            gap: 24px;
-            align-items: center;
+            flex-direction: column;
 
-            h6 {
+            h1,
+            h6,
+            i {
+                color: white;
                 font-weight: 700;
-                color: #d6cefd;
             }
 
             i {
                 font-size: 48px;
             }
+
+            span {
+                color: #293286;
+            }
+
+            .lista {
+                gap: 48px;
+                display: flex;
+                flex-direction: column;
+                margin-top: auto;
+            }
         }
     }
+}
 
-    .card-body {
-        margin: 32px;
-    }
+.btn-primary {
+    background-color: var(--primary-dark);
+    padding: 14px 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+}
 
-    label {
-        color: #8971c9;
-        font-weight: 700;
+@media screen and (max-width: 576px) {
+    .secao-contato {
+        padding-bottom: 0 !important;
     }
+    .mapa {
+        flex-direction: column;
+        margin: 0 -0.75rem;
 
-    input {
-        margin-bottom: 24px;
-    }
-
-    input,
-    textarea {
-        border: 1px solid hsla(249, 9%, 28%, 1);
-        padding: 8px 16px;
-        color: #6d6b80;
-    }
-    textarea {
-        height: 180px;
-    }
-
-    button {
-        padding: 14px 18px;
-        font-weight: 700;
-        background-color: hsla(256, 45%, 62%, 1);
+        .info {
+            width: 100% !important;
+            padding: 1em !important;
+            height: unset !important;
+            .lista {
+                gap: 24px !important;
+            }
+        }
+        iframe {
+            width: 100%;
+            height: 420px;
+        }
     }
 }

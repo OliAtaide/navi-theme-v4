@@ -7,17 +7,45 @@ global $wp;
 $current_url = home_url($wp->request)
     ?>
 
-<div class="section event-section">
+<div class="secao-editais-single py-5">
     <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/">
+                        Home
+                    </a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="/editais">
+                        Editais
+                    </a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    <?= the_title(); ?>
+                </li>
+            </ol>
+        </nav>
+        <h1 class="secao-titulo mb-4">
+            Editais
+        </h1>
         <div class="row">
-            <div class="col-8">
+            <div class="col mb-3">
+                <div class="docs">
+                    <h4>
+                        Documentos publicados
+                    </h4>
+                    <?= the_field("docs"); ?>
+                </div>
+            </div>
+            <div class="col-md-8">
                 <div class="event">
                     <div class="section-title">
                         <h1>
                             <?= the_title(); ?>
                         </h1>
                     </div>
-                    <div class="d-flex my-4 align-items-center">
+                    <div class="secao-post-info d-flex my-4 align-items-center">
                         <div>
                             <div class="d-flex gap-3">
                                 <i class="fa-regular fa-user"></i>
@@ -33,41 +61,12 @@ $current_url = home_url($wp->request)
                                 </span>
                             </div>
                         </div>
-                        <div class="logos ms-auto">
-                            <a type="button" class="btn">
-                                <i class="fa-brands fa-square-instagram"></i>
-                            </a>
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink() ?>"
-                                target="_blank" class="btn">
-                                <i class="fa-brands fa-square-facebook"></i>
-                            </a>
-                            <a href="https://twitter.com/intent/tweet?text=<?php the_title(); ?>&url=<?php the_permalink() ?>"
-                                target="_blank" class="btn" data-show-count="false">
-                                <i class="fa-brands fa-square-twitter"></i>
-                            </a>
-                        </div>
+                        <?php get_template_part('/partials/social-icons') ?>
                     </div>
                     <hr>
-                </div>
-            </div>
-            <div class="col">
-
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <div class="event">
-                    <?= the_content(); ?>
-                </div>
-            </div>
-            <div class="col">
-                <div class="docs">
-                    <h4>
-                        Documentos publicados
-                    </h4>
-                    <?= the_field("docs"); ?>
+                    <div class="event">
+                        <?= the_content(); ?>
+                    </div>
                 </div>
             </div>
         </div>
